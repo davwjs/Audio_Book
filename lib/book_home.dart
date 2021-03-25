@@ -1,5 +1,7 @@
 import 'package:audio_book_clone/book_data.dart';
 import 'package:audio_book_clone/book_model.dart';
+import 'package:audio_book_clone/books_details.dart';
+import 'package:audio_book_clone/books_profile.dart';
 import 'package:flutter/material.dart';
 
 class BooksHome extends StatefulWidget {
@@ -36,7 +38,12 @@ class _BooksHomeState extends State<BooksHome> {
                       color: Colors.white,
                       size: 35,
                     ),
-                    onPressed: () {},
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => BooksProfile(),
+                      ),
+                    ),
                   ),
                   IconButton(
                     icon: Icon(
@@ -124,7 +131,10 @@ class BookSection extends StatelessWidget {
       bookList = recentBooks;
     } else if (heading == "Discover More") {
       bookList = allBooks;
+    } else if (heading == "BookShelf") {
+      bookList = allBooks;
     }
+
     return Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -143,7 +153,15 @@ class BookSection extends StatelessWidget {
             height: MediaQuery.of(context).size.height * 0.4,
             child: ListView.builder(
               itemBuilder: (ctx, i) => GestureDetector(
-                onTap: () {},
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (ctx) => BooksDetails(
+                      index: i,
+                      section: heading,
+                    ),
+                  ),
+                ),
                 child: Row(
                   children: [
                     Column(

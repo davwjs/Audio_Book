@@ -1,4 +1,6 @@
 import 'package:audio_book_clone/book_data.dart';
+import 'package:audio_book_clone/book_read.dart';
+import 'package:audio_book_clone/books_listen.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 
@@ -86,7 +88,7 @@ class BooksDetails extends StatelessWidget {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(20),
                               child: Image.asset(
-                                "assets/images/0.jfif",
+                                bookList[index].coverImage,
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -111,7 +113,7 @@ class BooksDetails extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      "Conjure Women",
+                      bookList[index].name,
                       style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.w700,
@@ -121,7 +123,7 @@ class BooksDetails extends StatelessWidget {
                       height: 8,
                     ),
                     Text(
-                      "By Afia Atakora",
+                      "By ${bookList[index].author}",
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w500,
@@ -131,7 +133,7 @@ class BooksDetails extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SmoothStarRating(
-                          rating: 3,
+                          rating: bookList[index].rating,
                           isReadOnly: false,
                           filledIconData: Icons.star,
                           halfFilledIconData: Icons.star_half,
@@ -147,7 +149,7 @@ class BooksDetails extends StatelessWidget {
                           width: 10,
                         ),
                         Text(
-                          "4.0",
+                          "${bookList[index].rating}",
                           style: TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.w700,
@@ -213,24 +215,28 @@ class BooksDetails extends StatelessWidget {
                         Container(
                           width: 150,
                           height: 60,
-                            padding: EdgeInsets.symmetric(
-                              vertical: 4,
-                            ),
+                          padding: EdgeInsets.symmetric(
+                            vertical: 4,
+                          ),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(100),
                             color: Color(0xffc44536),
                           ),
                           child: FlatButton(
-                            onPressed: () {},
-                            child: Text(
-                              "READ",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 28,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            )
-                          ),
+                              onPressed: () => Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => BooksRead(),
+                                    ),
+                                  ),
+                              child: Text(
+                                "READ",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 28,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              )),
                         ),
                         SizedBox(
                           width: 20,
@@ -246,7 +252,15 @@ class BooksDetails extends StatelessWidget {
                             color: Color(0xffc44536),
                           ),
                           child: FlatButton(
-                              onPressed: () {},
+                              onPressed: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => BooksListen(
+                                    index: index,
+                                    section: section,
+                                  ),
+                                ),
+                              ),
                               child: Text(
                                 "LISTEN",
                                 style: TextStyle(
@@ -254,8 +268,7 @@ class BooksDetails extends StatelessWidget {
                                   fontSize: 28,
                                   fontWeight: FontWeight.w700,
                                 ),
-                              )
-                          ),
+                              )),
                         ),
                       ],
                     ),

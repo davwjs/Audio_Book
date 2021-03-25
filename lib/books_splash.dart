@@ -1,3 +1,4 @@
+import 'package:audio_book_clone/book_home.dart';
 import 'package:flutter/material.dart';
 
 class BooksSplash extends StatelessWidget {
@@ -71,7 +72,7 @@ class BooksSplash extends StatelessWidget {
                             color: Colors.white,
                             size: 30,
                           ),
-                          onPressed: () {},
+                          onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => BooksHome(),),),
                         ),
                       )
                     ],

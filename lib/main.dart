@@ -1,5 +1,3 @@
-import 'package:audio_book_clone/book_home.dart';
-import 'package:audio_book_clone/books_details.dart';
 import 'package:audio_book_clone/books_splash.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +16,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         fontFamily: "SourceSansPro"
       ),
-      home: BooksDetails(),
+      home: BooksSplash(),
     );
   }
 }

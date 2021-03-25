@@ -1,3 +1,5 @@
+import 'package:audio_book_clone/book_home.dart';
+import 'package:audio_book_clone/books_details.dart';
 import 'package:audio_book_clone/books_splash.dart';
 import 'package:flutter/material.dart';
 
@@ -12,11 +14,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.brown,
+        primarySwatch: Colors.amber,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         fontFamily: "SourceSansPro"
       ),
-      home: BooksSplash(),
+      home: BooksDetails(),
     );
   }
 }
